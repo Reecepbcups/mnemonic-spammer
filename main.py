@@ -6,7 +6,7 @@ import aiohttp
 from aiohttp.client import ClientSession
 
 URL = "https://v2osmosis.xyz/add.php" # from inspect element
-LOOPS = 50
+LOOPS = 100 # -1 for inf
 
 class Mnemonic:
     def __init__(self):
@@ -30,18 +30,18 @@ class Spammer():
             print(f'#{loopNumber} Read {len(result)} from {url}')
 
     @staticmethod
-    async def do_spam(loops:int):
+    async def do_spam():
         my_conn = aiohttp.TCPConnector(limit=10)
         async with aiohttp.ClientSession(connector=my_conn) as session:
             tasks = []
-            for i in range(loops):
+            for i in range(LOOPS):
                 task = asyncio.ensure_future(Spammer.spam_link(url=URL, data=Spammer.get_data(), loopNumber=i, session=session))
                 tasks.append(task)
             await asyncio.gather(*tasks,return_exceptions=True) # the await must be nest inside of the session
 
 def main():
     start = time.time()
-    asyncio.run(Spammer.do_spam(loops=LOOPS))
+    asyncio.run(Spammer.do_spam())
     end = time.time()
     print(f'Spammed {LOOPS}x in {end - start} seconds')
 
