@@ -31,7 +31,7 @@ profiles:
       pricing:
         web:
           denom: uakt
-          amount: 20
+          amount: 40
 
 deployment:
   web:
