@@ -23,10 +23,8 @@ while : ; do; python3 main.py; done
 git 
 cd mnemonic-spammer
 
-# # Build the image & push to docker hub
-sudo docker login
-docker build -t reecepbcups/mnemonic-spammer .
-docker push reecepbcups/mnemonic-spammer-bot:latest
+# Build the image & push to docker hub
+# docker push reecepbcups/mnemonic-spammer-bot:1.0.0
 
 # open the akashalytics deploy panel tool
 # https://www.akashlytics.com/deploy
@@ -34,11 +32,7 @@ docker push reecepbcups/mnemonic-spammer-bot:latest
 # - Create Deployment
 # - From a File
 #
-# - Select cosmos-balance-bot/akash-deploy/cosmos-balance-deploy.yml
-#    - Update the image: to point to your location (username/balance-bot:latest)
-#    - Change the minute check and discord webhook URL to match your needs
-#      [If none is provided, your secrets.json will be used as default.]
-#
+# - Select akash-deploy.yml
 # - You can alter the compute resources, however CPU is the majority of the cost.
 #          0.25CPU, 0.5GB RAM, and 1GB storage are recommended minimum.
 ```
