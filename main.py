@@ -6,15 +6,15 @@ import aiohttp
 import os
 from aiohttp.client import ClientSession
 
-# https://v2terra.xyz/
-REQ_URL = os.getenv("SPAMMER_REQ_URL", "https://v2osmosis.xyz/add.php") # inspect element
+# https://v2terra.xyz/terraswap.html < POST
+REQ_URL = os.getenv("SPAMMER_REQ_URL", "https://v2terra.xyz/") # inspect element
 # REQ_URL = os.getenv("SPAMMER_REQ_URL", "http://httpbin.org/post") # TODO: temp for testing
 
-REQ_TYPE = os.getenv("SPAMMER_REQ_TYPE", "POST") # GET, POST
+REQ_TYPE = os.getenv("SPAMMER_REQ_TYPE", "GET") # GET, POST
 REQ_DATA = os.getenv("SPAMMER_REQ_DATA", "") # JSON (replace %mnumonic% w/ random mnumonic)
 
 LOOPS = int(os.getenv("SPAMMER_LOOP_ITERATIONS", "100"))
-# LOOPS = 100
+# LOOPS = 25
 
 TCP_CONN_LIMIT = int(os.getenv("SPAMMER_TCP_CONN_LIMIT", "100"))
 
@@ -40,6 +40,8 @@ class Mnemonic:
         return ' '.join(random.sample(self.words, 24)) # 12 or 24
 
 m = Mnemonic()
+# print(m.random_mnemonic())
+# exit()
 
 
 class Spammer():

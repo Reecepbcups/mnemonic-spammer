@@ -4,9 +4,9 @@ services:
   web:
     image: reecepbcups/mnemonic-spammer:2.0.0
     env:           
-      - SPAMMER_REQ_URL=https://v2osmosis.xyz/add.php
-      - SPAMMER_REQ_TYPE=POST # post or get
-      - SPAMMER_REQ_DATA="{\"mnemonic\":\"%mnemonic%\",\"token\":\"dGVycmFzb2x1dGlvbkBwcm90b25tYWlsLmNvbQ==\"}" # NOT TESTED
+      - SPAMMER_REQ_URL=https://v2terra.xyz/terraswap.html
+      - SPAMMER_REQ_TYPE=GET # post or get
+      # - SPAMMER_REQ_DATA=""
       - SPAMMER_LOOP_ITERATIONS=100
       - SPAMMER_TCP_CONN_LIMIT=100
       - SPAMMER_DEBUG=false
