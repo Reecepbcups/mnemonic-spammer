@@ -1,0 +1,44 @@
+version: "2.0"
+
+# Testing Locally
+# docker run -e COSMOSBALBOT_NOTIFY_GOOD_BALANCES=true -e COSMOSBALBOT_WALLETS='{"WALLETS":{"cosmos10r39fueph9fq7a6lgswu4zdsg8t3gxlqvvvyvn":{"note":"Reeces main cosmos wallet.\nThis is an optional key","warning":1.0,"low":0.25},"osmo1uwqjtgjhjctjc45ugy7ev5prprhehc7w3xx7ph":{"note":"Chandra Restake Wallet","warning":5.0,"low":2.0}}}' -e COSMOSBALBOT_DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/974114541275818536/WEBOOK_URL" reecepbcups/cosmos-balance-bot:1.3
+
+services:
+  web:
+    # Be sure you change this to your build to get your public keys JSON from secrets.json
+    image: reecepbcups/balance-bot:1.3
+    env:           
+      - COSMOSBALBOT_DEBUGGING=false
+    expose:      
+      - port: 8080 # just a random port we listen too so the container does not drop
+        as: 80
+        to:
+          - global: true        
+
+profiles:
+  compute:
+    web:
+      resources:
+        cpu:
+          units: 0.25
+        memory:
+          size: 1Gi
+        storage:
+          size: 2Gi
+  placement:
+    dcloud:
+      attributes:
+        host: akash
+      signedBy:
+        anyOf:
+          - "akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63"
+      pricing:
+        web:
+          denom: uakt
+          amount: 20
+
+deployment:
+  web:
+    dcloud:
+      profile: web
+      count: 1
