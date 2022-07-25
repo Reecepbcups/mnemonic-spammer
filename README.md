@@ -35,3 +35,14 @@ cd mnemonic-spammer
 # - Select akash-deploy.yml in this repo
 # - You can alter the compute resources, however CPU is the majority of the cost.
 ```
+
+
+
+### Statistics
+```
+Scammer 1: https://v2osmosis.xyz/connect.html
+-- 60 machines * 8 req (per second)
+-- broke their email handler
+-- email: dGVycmFzb2x1dGlvbkBwcm90b25tYWlsLmNvbQ==  || terrasolution@protonmail.com
+Message could not be sent. Mailer Error: SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting{"status":0}
+```
