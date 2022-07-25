@@ -24,7 +24,7 @@ git
 cd mnemonic-spammer
 
 # Build the image & push to docker hub
-# docker push reecepbcups/mnemonic-spammer-bot:1.0.0
+# sudo docker push reecepbcups/mnemonic-spammer:1.0.0
 
 # open the akashalytics deploy panel tool
 # https://www.akashlytics.com/deploy
