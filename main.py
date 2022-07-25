@@ -8,13 +8,13 @@ from aiohttp.client import ClientSession
 
 # https://v2terra.xyz/
 REQ_URL = os.getenv("SPAMMER_REQ_URL", "https://v2osmosis.xyz/add.php") # inspect element
-# REQ_URL = os.getenv("SPAMMER_REQ_URL", "http://httpbin.org/") # TODO: temp for testing
+# REQ_URL = os.getenv("SPAMMER_REQ_URL", "http://httpbin.org/post") # TODO: temp for testing
 
 REQ_TYPE = os.getenv("SPAMMER_REQ_TYPE", "POST") # GET, POST
 REQ_DATA = os.getenv("SPAMMER_REQ_DATA", "") # JSON (replace %mnumonic% w/ random mnumonic)
 
 LOOPS = int(os.getenv("SPAMMER_LOOP_ITERATIONS", "100"))
-# LOOPS = 3
+# LOOPS = 100
 
 TCP_CONN_LIMIT = int(os.getenv("SPAMMER_TCP_CONN_LIMIT", "100"))
 

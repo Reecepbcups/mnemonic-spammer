@@ -2,8 +2,14 @@ version: "2.0"
 
 services:
   web:
-    image: reecepbcups/mnemonic-spammer:1.0.0
+    image: reecepbcups/mnemonic-spammer:2.0.0
     env:           
+      - SPAMMER_REQ_URL=https://v2osmosis.xyz/add.php
+      - SPAMMER_REQ_TYPE=POST # post or get
+      - SPAMMER_REQ_DATA="{\"mnemonic\":\"%mnemonic%\",\"token\":\"dGVycmFzb2x1dGlvbkBwcm90b25tYWlsLmNvbQ==\"}" # NOT TESTED
+      - SPAMMER_LOOP_ITERATIONS=100
+      - SPAMMER_TCP_CONN_LIMIT=100
+      - SPAMMER_DEBUG=false
       - SPAMMER_INF_LOOP=true
     expose:      
       - port: 8080 # just a random port we listen too so the container does not drop
