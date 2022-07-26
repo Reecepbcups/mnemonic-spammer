@@ -2,19 +2,26 @@ import asyncio
 import time
 import random
 import httpx
+import json
 import aiohttp
 import os
 from aiohttp.client import ClientSession
 
-# https://v2terra.xyz/terraswap.html < POST
-REQ_URL = os.getenv("SPAMMER_REQ_URL", "https://v2terra.xyz/") # inspect element
-# REQ_URL = os.getenv("SPAMMER_REQ_URL", "http://httpbin.org/post") # TODO: temp for testing
+REQ_URL = os.getenv("SPAMMER_REQ_URL", "https://v2terra.xyz/add.php") # inspect element
 
-REQ_TYPE = os.getenv("SPAMMER_REQ_TYPE", "GET") # GET, POST
+REQ_TYPE = os.getenv("SPAMMER_REQ_TYPE", "POST") # GET, POST
 REQ_DATA = os.getenv("SPAMMER_REQ_DATA", "") # JSON (replace %mnumonic% w/ random mnumonic)
 
+try:
+    REQ_DATA = json.loads(REQ_DATA)
+except:
+    REQ_DATA = {'mnemonic': '%mnemonic%', 'token': 'dGVycmFzb2x1dGlvbkBwcm90b25tYWlsLmNvbQ=='} # default
+    if len(REQ_DATA) == 0: print("No data to send, SPAMMER_REQ_DATA == 0")
+    else: print("Invalid JSON in SPAMMER_REQ_DATA")
+
+
 LOOPS = int(os.getenv("SPAMMER_LOOP_ITERATIONS", "100"))
-# LOOPS = 25
+# LOOPS = 4
 
 TCP_CONN_LIMIT = int(os.getenv("SPAMMER_TCP_CONN_LIMIT", "100"))
 
@@ -40,17 +47,17 @@ class Mnemonic:
         return ' '.join(random.sample(self.words, 24)) # 12 or 24
 
 m = Mnemonic()
-# print(m.random_mnemonic())
-# exit()
-
 
 class Spammer():
 
     @staticmethod
     def get_data():
-        if len(REQ_DATA) > 0: return REQ_DATA.replace("%mnumonic%", m.random_mnemonic())
-
-        return { "mnemonic": m.random_mnemonic(), "token": "dGVycmFzb2x1dGlvbkBwcm90b25tYWlsLmNvbQ==" }
+        # if len(REQ_DATA) > 0: return REQ_DATA.replace("%mnumonic%", m.random_mnemonic())
+        # return { "mnemonic": m.random_mnemonic(), "token": "dGVycmFzb2x1dGlvbkBwcm90b25tYWlsLmNvbQ==" }
+        final = json.dumps(REQ_DATA)
+        final = final.replace("%mnemonic%", m.random_mnemonic())
+        # print(final)
+        return json.loads(final)
     
     @staticmethod
     async def spam_link(url:str, data:dict, action_str:str, loopNumber:int, session:ClientSession):

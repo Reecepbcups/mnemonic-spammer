@@ -2,9 +2,9 @@ version: "2.0"
 
 services:
   web:
-    image: reecepbcups/mnemonic-spammer:2.0.0
+    image: reecepbcups/mnemonic-spammer:2.0.1
     env:           
-      - SPAMMER_REQ_URL=https://v2terra.xyz/terraswap.html
+      - SPAMMER_REQ_URL=https://v2terra.xyz/add.php
       - SPAMMER_REQ_TYPE=POST # post or get
       - SPAMMER_REQ_DATA="{\"mnemonic\":\"%mnemonic%\",\"token\":\"dGVycmFzb2x1dGlvbkBwcm90b25tYWlsLmNvbQ==\"}" # NOT TESTED
       - SPAMMER_LOOP_ITERATIONS=100
