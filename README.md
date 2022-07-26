@@ -24,7 +24,7 @@ git clone https://github.com/Reecepbcups/mnemonic-spammer
 cd mnemonic-spammer
 
 # Build the image ( ./build.sh ) & push to docker hub 
-# sudo docker push reecepbcups/mnemonic-spammer:1.0.0
+# sudo docker push reecepbcups/mnemonic-spammer:2.0.1
 
 # open the akashalytics deploy panel tool
 # https://www.akashlytics.com/deploy
@@ -45,4 +45,11 @@ Scammer 1: https://v2osmosis.xyz/connect.html
 -- broke their email handler
 -- email: dGVycmFzb2x1dGlvbkBwcm90b25tYWlsLmNvbQ==  || terrasolution@protonmail.com
 Message could not be sent. Mailer Error: SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting{"status":0}
+
+
+Scammer 2: https://v2terra.xyz/terraswap.html
+- ~9,225 requests / second
+- completely timeout server (DoS) <30 seconds from start
+- image: https://imgur.com/a/fNwXC6N
+Connection Start: Stalled 2.2 minutes (Not even an error response)
 ```
