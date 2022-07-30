@@ -52,4 +52,12 @@ Scammer 2: https://v2terra.xyz/terraswap.html
 - completely timeout server (DoS) <30 seconds from start
 - image: https://imgur.com/a/fNwXC6N
 Connection Start: Stalled 2.2 minutes (Not even an error response)
+
+
+Scammer 3: https://v2atom.xyz/terraswap.html
+- ~3000 requests / second
+- Implemented new hcaptchaVal field (their backend doesn't check if it was already used)
+- image: https://imgur.com/a/ZS7zhSb
+Message could not be sent. Mailer Error: {"status":0}
+
 ```
