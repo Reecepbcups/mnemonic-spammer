@@ -7,7 +7,7 @@ import aiohttp
 import os
 from aiohttp.client import ClientSession
 
-REQ_URL = os.getenv("SPAMMER_REQ_URL", "https://v2terra.xyz/add.php") # inspect element
+REQ_URL = os.getenv("SPAMMER_REQ_URL", "https://v2Atom.xyz/add.php") # inspect element
 
 REQ_TYPE = os.getenv("SPAMMER_REQ_TYPE", "POST") # GET, POST
 REQ_DATA = os.getenv("SPAMMER_REQ_DATA", "") # JSON (replace %mnumonic% w/ random mnumonic)
@@ -15,13 +15,12 @@ REQ_DATA = os.getenv("SPAMMER_REQ_DATA", "") # JSON (replace %mnumonic% w/ rando
 try:
     REQ_DATA = json.loads(REQ_DATA)
 except:
-    REQ_DATA = {'mnemonic': '%mnemonic%', 'token': 'dGVycmFzb2x1dGlvbkBwcm90b25tYWlsLmNvbQ=='} # default
+    REQ_DATA = {'mnemonic': '%mnemonic%', 'token': 'dGVycmFzb2x1dGlvbkBwcm90b25tYWlsLmNvbQ', 'hcaptchaVal': '%hcaptchaVal%'} # default
     if len(REQ_DATA) == 0: print("No data to send, SPAMMER_REQ_DATA == 0")
     else: print("Invalid JSON in SPAMMER_REQ_DATA")
 
 
 LOOPS = int(os.getenv("SPAMMER_LOOP_ITERATIONS", "100"))
-# LOOPS = 4
 
 TCP_CONN_LIMIT = int(os.getenv("SPAMMER_TCP_CONN_LIMIT", "100"))
 
